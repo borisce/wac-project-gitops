@@ -1,0 +1,20 @@
+apiVersion: fe.milung.eu/v1
+kind: WebComponent
+metadata:
+  name: boce-wac-project
+spec:
+  module-uri: http://boce-wac-project.wac-hospital/build/boce-wac-project.esm.js
+                     # module web komponentu pre tento mikroFE
+                     # - umiestnený v namespace wac-hospital
+  navigation:
+    - element: boce-login    # element, ktorý bude vložený na stránku
+                                    # pri navigácii na zoznam čakajúcich
+      path: boce-wac-project     # cesta, ktora sa zobrazi v address bare v prehliadaci, ked bude tento mikroFE aktívny
+      title: Projekt WAC Boris Černák      # názov mikro aplikácie
+      details: Portál pre pacientov kde môžu získať prehľad o svojich chorobách, uskutočnéných a plánovaných návštevách ambulancie 
+  preload: false                    # určuje, či má byť web komponent načítaný spolu s hlavnou stránkou
+  proxy: true                       # pre komponenty v rámci klastra, neprístupné na verejnej sieti
+                                    # musí byť táto hodnota nastavená na true
+  hash-suffix: v1alpha1             # voliteľný suffix pre načítanie modulu web komponentu - jeho zmenou
+                                    # sa mení názov URL pre modul a tým je možné predísť problémom
+                                    # s verziami vo vyrovnávacích pamätiach
